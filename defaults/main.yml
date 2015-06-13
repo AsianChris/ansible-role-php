@@ -1,0 +1,10 @@
+---
+php:
+  modules:
+    curl: php5-curl
+    gd: php5-gd
+    mcrypt: php5-mcrypt
+    intl: php5-intl
+    json: php5-json
+    memcached: php5-memcached
+    mysql: php5-mysql
