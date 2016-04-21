@@ -1,7 +1,8 @@
 ---
 - name: Install Packages
   apt: pkg={{ item }} state=present
-  sudo: yes
+  become: yes
+  become_method: sudo
   with_items:
     - php5
     - php5-common
@@ -9,10 +10,12 @@
 
 - name: Install PHP extensions (modules)
   apt: pkg={{ item.value }}
-  sudo: yes
-  with_dict: php.modules
+  become: yes
+  become_method: sudo
+  with_dict: "{{ php.modules }}"
 
 - name: Enable extensions (modules) for all SAPI's
   command: php5enmod -s ALL {{ item.key }}
-  sudo: yes
-  with_dict: php.modules
+  become: yes
+  become_method: sudo
+  with_dict: "{{ php.modules }}"
